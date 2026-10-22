@@ -33,3 +33,17 @@ Do not copy its unrestricted-preset or host-sandbox/approval-bypass additions as
 ## Release gate
 
 Do not change the install target or publish a release until package name, runtime plugin name, patch entry, updater source, CLI/uninstall behavior, and tests agree. Verify rollback from a disposable profile first.
+
+## Implemented on `repair/core-functionality`
+
+- Added a read-only fork-integrity checker at `scripts/verify-fork.mjs`.
+- Updated repository, homepage, and issue-tracker metadata to this fork; added `npm run check:fork`.
+- Added an independent `purge-maintenance` CLI for verified snapshots and audit-log reading/writing.
+- Snapshot restore requires a verified snapshot and a destination path that does not already exist. Symbolic links and special files are rejected.
+- Added `npm run test:maintenance`.
+
+## Test results
+
+- JavaScript syntax checks passed for the new maintenance modules and CLI.
+- Maintenance tests passed: 3 passed, 0 failed, 1 skipped (symbolic-link test is skipped on Windows).
+- The fork-integrity check is expected to report blockers until the package/runtime/patch identity and install source are migrated together. This branch is not release-ready and has not been installed on the user's working profile.
