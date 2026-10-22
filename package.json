@@ -16,7 +16,8 @@
     "./package.json": "./package.json"
   },
   "bin": {
-    "dsh-purge": "bin/dsh-purge.js"
+    "dsh-purge": "bin/dsh-purge.js",
+    "purge-maintenance": "bin/maintenance.js"
   },
   "files": [
     "lib",
@@ -42,7 +43,8 @@
     "build:client": "node scripts/build-client.mjs",
     "test:gate": "node test/gate.mjs",
     "test:cwd": "node test/cwd-variable.mjs",
-    "check:fork": "node scripts/verify-fork.mjs"
+    "check:fork": "node scripts/verify-fork.mjs",
+    "test:maintenance": "node --test test/maintenance.test.mjs"
   },
   "license": "MIT",
   "keywords": [
