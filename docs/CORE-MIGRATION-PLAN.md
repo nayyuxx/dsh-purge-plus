@@ -46,4 +46,5 @@ Do not change the install target or publish a release until package name, runtim
 
 - JavaScript syntax checks passed for the new maintenance modules and CLI.
 - Maintenance tests passed: 3 passed, 0 failed, 1 skipped (symbolic-link test is skipped on Windows).
+- CLI smoke flow passed: help, snapshot creation, snapshot verification, and restore into a new destination; the temporary test directory was removed.
 - The fork-integrity check is expected to report blockers until the package/runtime/patch identity and install source are migrated together. This branch is not release-ready and has not been installed on the user's working profile.
