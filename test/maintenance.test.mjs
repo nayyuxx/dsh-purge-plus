@@ -48,7 +48,7 @@ test("snapshot verification detects modified files and refuses restore", () => {
   }
 });
 
-test("snapshot rejects symlinks and backup directories inside the source", { skip: process.platform === "win32" }) => {
+test("snapshot rejects symlinks and backup directories inside the source", { skip: process.platform === "win32" }, () => {
   const root = tempDir();
   try {
     const source = path.join(root, "source");
