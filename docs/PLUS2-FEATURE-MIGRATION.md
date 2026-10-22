@@ -45,3 +45,22 @@ The user's request is to leave the original plus2 source intact. The plus2 repos
 ## Release gate
 
 Do not install or publish until all of the following agree: package name/version, runtime plugin name, Cordis patch identity, CLI/uninstall behavior, update repository/ref, and tests. Do not use plus2 as an installation or update source.
+
+## Safe components migrated in this branch
+
+- `lib/anchors.js`: local anchor-override data handling and copy-on-write patch override helper. It is not yet wired into the host patch application path.
+- `lib/probe.js`: short-lived nonce probe for testing prompt-delivery, with expiry and malformed-state handling. It is not yet wired into the UI.
+- `lib/audit.js`: append-only audit log with rotation and sensitive-key filtering.
+- Added unit tests for the three modules and included them in `npm run test:support`.
+- The existing verified-backup CLI and its tests remain separate from the host patch execution path.
+
+## Latest validation
+
+On the connected Windows machine, syntax checks passed for the migrated modules. The combined support test run reported 6 passed, 0 failed, and 1 skipped (the symlink-specific test is skipped on Windows). The CLI snapshot/verify/restore smoke flow also passed.
+
+## Not yet ready
+
+- The package identity remains `dsh-purge@1.4.2`; runtime identity and update/install targets have not been unified.
+- The updater still targets the upstream repository. This is intentionally a release blocker until a safe, reviewed release plan is complete.
+- The community panel, preset registration, full compatibility diagnosis, and UI/API integration have not been migrated.
+- The original plus2 repository has not been modified. Its source remains there unchanged; this branch does not wire host-sandbox/approval bypass behavior into the execution path.
