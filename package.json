@@ -44,7 +44,8 @@
     "test:gate": "node test/gate.mjs",
     "test:cwd": "node test/cwd-variable.mjs",
     "check:fork": "node scripts/verify-fork.mjs",
-    "test:maintenance": "node --test test/maintenance.test.mjs"
+    "test:maintenance": "node --test test/maintenance.test.mjs",
+    "test:support": "node --test test/anchors.test.mjs test/audit.test.mjs test/probe.test.mjs test/maintenance.test.mjs"
   },
   "license": "MIT",
   "keywords": [
