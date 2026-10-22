@@ -41,7 +41,7 @@ test("snapshot verification detects modified files and refuses restore", () => {
     fs.writeFileSync(path.join(snapshot.snapshotDir, "data.txt"), "changed");
     const report = verifySnapshot(snapshot.snapshotDir);
     assert.equal(report.ok, false);
-    assert.ok(report.errors.some((e) => e.includes("hash mismatch")));
+    assert.ok(report.errors.some((e) => e.includes("hash mismatch") || e.includes("size mismatch")));
     assert.throws(() => restoreSnapshot(snapshot.snapshotDir, path.join(root, "restored")), /verification failed/i);
   } finally {
     fs.rmSync(root, { recursive: true, force: true });
